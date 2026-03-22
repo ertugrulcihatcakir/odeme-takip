@@ -28,8 +28,9 @@ export default function ExpenseList({ expenses, onDelete }: Props) {
           style={{ animationDelay: `${i * 60}ms` }}
         >
           <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-2">
-              <span className="text-sm font-medium">{getCategoryLabel(expense.category)}</span>
+            <p className="text-sm font-semibold truncate">{expense.name}</p>
+            <div className="flex items-center gap-2 mt-0.5">
+              <span className="text-xs text-muted-foreground">{getCategoryLabel(expense.category)}</span>
               {expense.note && (
                 <span className="text-xs text-muted-foreground truncate">— {expense.note}</span>
               )}

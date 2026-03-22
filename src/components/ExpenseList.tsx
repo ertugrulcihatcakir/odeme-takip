@@ -1,4 +1,5 @@
 import { Expense } from "@/hooks/use-expenses";
+import { getCategoryLabel } from "@/lib/expense-types";
 import { Trash2 } from "lucide-react";
 import { format } from "date-fns";
 import { tr } from "date-fns/locale";

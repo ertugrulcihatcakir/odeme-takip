@@ -25,7 +25,6 @@ export default function AddExpenseForm({ onAdd }: Props) {
       name: name.trim(),
       category,
       note: note.trim(),
-      date: new Date().toISOString(),
     });
 
     setAmount("");

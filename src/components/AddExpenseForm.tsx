@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { CATEGORIES, Expense } from "@/lib/expense-types";
+import { CATEGORIES } from "@/lib/expense-types";
+import { Expense } from "@/hooks/use-expenses";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Plus } from "lucide-react";
 
 interface Props {
-  onAdd: (expense: Omit<Expense, "id">) => void;
+  onAdd: (expense: Omit<Expense, "id" | "date">) => void;
 }
 
 export default function AddExpenseForm({ onAdd }: Props) {
@@ -24,7 +25,6 @@ export default function AddExpenseForm({ onAdd }: Props) {
       name: name.trim(),
       category,
       note: note.trim(),
-      date: new Date().toISOString(),
     });
 
     setAmount("");

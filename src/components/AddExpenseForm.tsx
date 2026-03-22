@@ -10,22 +10,25 @@ interface Props {
 
 export default function AddExpenseForm({ onAdd }: Props) {
   const [amount, setAmount] = useState("");
+  const [name, setName] = useState("");
   const [category, setCategory] = useState("yemek");
   const [note, setNote] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const parsed = parseFloat(amount);
-    if (!parsed || parsed <= 0) return;
+    if (!parsed || parsed <= 0 || !name.trim()) return;
 
     onAdd({
       amount: parsed,
+      name: name.trim(),
       category,
-      note: note.trim() || getCatEmoji(category),
+      note: note.trim(),
       date: new Date().toISOString(),
     });
 
     setAmount("");
+    setName("");
     setNote("");
   };
 

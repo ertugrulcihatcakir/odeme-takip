@@ -1,6 +1,7 @@
 export interface Expense {
   id: string;
   amount: number;
+  name: string;
   category: string;
   note: string;
   date: string; // ISO string

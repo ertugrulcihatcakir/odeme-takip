@@ -10,22 +10,25 @@ interface Props {
 
 export default function AddExpenseForm({ onAdd }: Props) {
   const [amount, setAmount] = useState("");
+  const [name, setName] = useState("");
   const [category, setCategory] = useState("yemek");
   const [note, setNote] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const parsed = parseFloat(amount);
-    if (!parsed || parsed <= 0) return;
+    if (!parsed || parsed <= 0 || !name.trim()) return;
 
     onAdd({
       amount: parsed,
+      name: name.trim(),
       category,
-      note: note.trim() || getCatEmoji(category),
+      note: note.trim(),
       date: new Date().toISOString(),
     });
 
     setAmount("");
+    setName("");
     setNote("");
   };
 
@@ -35,7 +38,14 @@ export default function AddExpenseForm({ onAdd }: Props) {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="flex gap-3">
-        <div className="relative flex-1">
+        <Input
+          placeholder="Harcama adı (ör: Market alışverişi)"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="flex-1 h-12 bg-card font-medium"
+          required
+        />
+        <div className="relative w-36">
           <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground font-medium">₺</span>
           <Input
             type="number"

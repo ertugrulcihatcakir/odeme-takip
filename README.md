@@ -1,3 +1,3 @@
 # Welcome to your Lovable project
 
-TODO: Document your project here
+Lovable ai ile yaptığım ödeme takip sistemi kullanıcı girişi var ve basit bir tasarım.
